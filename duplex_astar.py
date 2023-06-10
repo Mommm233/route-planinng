@@ -4,8 +4,8 @@ import time
 
 
 class DuplexAStar(AStar):
-    def __init__(self, static_map):
-        super().__init__(static_map)
+    def __init__(self, static_map, seed=2):
+        super().__init__(static_map, seed)
 
     def extensionNode(self, open_list, open_dict, closed_dict, curNode, goal):
         '''扩展节点'''
@@ -105,6 +105,6 @@ class DuplexAStar(AStar):
         self.search_time = round(end_time - start_time, 3)
         self.node_num = len(forward_open_list) + len(forward_closed_dict) + \
             len(backward_open_list) + len(backward_closed_dict)
-        self.plot(start, end)
+        # self.plot(start, end)
         return 
 
