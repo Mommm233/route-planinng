@@ -71,8 +71,8 @@ class AStar():
         x, y = self.to2DIndex(obstacles)
         self.static_map[x, y] = 0   # color is black
 
-    def cross_boundry(self, next):
-        x, y = next
+    def cross_boundry(self, pos):
+        x, y = pos
         return x < 0 or x >= self.height or y < 0 or y >= self.width
     
     def check_obstacles(self, cur, next):
@@ -97,9 +97,9 @@ class AStar():
 
     def plot(self, start, end):
         fig, ax = plt.subplots()
-        plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=0, hspace=0)
+        # plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=0, hspace=0)
 
-        # axes[0].grid(True, color='black')
+        ax.grid(True, color='black')
         ax.set_xticks(np.arange(-0.5, self.width, 1), np.arange(0, self.width + 1, 1), alpha=0)   # alpha=0隐藏刻度
         ax.set_yticks(np.arange(-0.5, self.height, 1), np.arange(self.height, -1, -1), alpha=0)
 
@@ -154,6 +154,6 @@ class AStar():
 
         self.search_time = round(end_time - start_time, 3)
         self.node_num = len(open_list) + len(closed_dict) - 1
-        self.plot(start, end)
+        # self.plot(start, end)
         return 
     
