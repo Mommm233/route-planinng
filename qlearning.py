@@ -40,7 +40,7 @@ class Qlearning():
                 action = self.get_next_action(cur_state, epsilon)
                 next_state = (cur_state[0] + self.actions[action][0], cur_state[1] + self.actions[action][1])
                 if self.cross_boundry(next_state) or \
-                    self.check_static_obstacle(cur_state, next_state):
+                    self.check_collision(cur_state, next_state):
                     r = -1
                     self.q_table[cur_state][action] += alpha * (r - self.q_table[cur_state][action])
                     done = True
