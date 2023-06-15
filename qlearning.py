@@ -16,7 +16,7 @@ class Qlearning():
         x, y = pos
         return x < 0 or x >= self.height or y < 0 or y >= self.width
 
-    def check_obstacle(self, cur_state, next_state):
+    def check_collision(self, cur_state, next_state):
         if self.grid[next_state] == 0: return True
         if abs(cur_state[0] - next_state[0]) + abs(cur_state[1] - next_state[1]) != 2:
             return False
