@@ -1,7 +1,5 @@
 import numpy as np
 
-
-
 class Qlearning():
     def __init__(self, grid, start, end, dist, seed=0):
         np.random.seed(seed)
@@ -18,7 +16,7 @@ class Qlearning():
         x, y = pos
         return x < 0 or x >= self.height or y < 0 or y >= self.width
 
-    def check_collision(self, cur_state, next_state):
+    def check_obstacle(self, cur_state, next_state):
         if self.grid[next_state] == 0: return True
         if abs(cur_state[0] - next_state[0]) + abs(cur_state[1] - next_state[1]) != 2:
             return False
@@ -42,7 +40,7 @@ class Qlearning():
                 action = self.get_next_action(cur_state, epsilon)
                 next_state = (cur_state[0] + self.actions[action][0], cur_state[1] + self.actions[action][1])
                 if self.cross_boundry(next_state) or \
-                    self.check_collision(cur_state, next_state):
+                    self.check_static_obstacle(cur_state, next_state):
                     r = -1
                     self.q_table[cur_state][action] += alpha * (r - self.q_table[cur_state][action])
                     done = True
@@ -56,8 +54,7 @@ class Qlearning():
                     self.q_table[cur_state][action] += alpha * (r + gamma * np.max(self.q_table[next_state]) - self.q_table[cur_state][action])
                     cur_state = next_state
                     i += 1
-
-            # print(f'epoch:{epoch}, done:{done}')
+            print(f'epoch:{epoch}, done:{done}')
 
 
     def get_path(self):
