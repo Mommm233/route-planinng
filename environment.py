@@ -10,7 +10,7 @@ path = ''
 img = cv2.imread(path)
 h, w, _ = img.shape
 rate = 0.6
-grid = cv2.resize(img, (int(h * rate), int(w * rate)))[:, :, 0] // 255
+grid = cv2.resize(img, (int(w * rate), int(h * rate)))[:, :, 0] // 255
 grid = np.array(grid)
 grid[grid == 1] = 255
 
