@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import math
-from qlearning.py import Qlearning
+from qlearning import Qlearning
 
 '''
 全局路径规划与局部路径规划结合
