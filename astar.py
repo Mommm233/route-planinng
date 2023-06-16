@@ -56,6 +56,7 @@ class AStar():
         while curNode:
             path.append([curNode.x, curNode.y])
             curNode = curNode.father
+        path.reverse()
         return np.array(path)
 
     def get_path(self, start, end):
