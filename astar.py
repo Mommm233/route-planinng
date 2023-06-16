@@ -32,7 +32,7 @@ class Node():
 
 
 class AStar():
-    def __init__(self, grid, start, end, seed=2):
+    def __init__(self, grid, seed=2):
         np.random.seed(seed)
         self.grid = grid
         self.height, self.width = grid.shape
